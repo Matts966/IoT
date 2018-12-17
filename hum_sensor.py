@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 DHTPIN = 17
+LEDOUT = 23
 
 GPIO.setmode(GPIO.BCM)
 
@@ -20,6 +21,7 @@ def read_dht11_dat():
 	GPIO.output(DHTPIN, GPIO.LOW)
 	time.sleep(0.02)
 	GPIO.setup(DHTPIN, GPIO.IN, GPIO.PUD_UP)
+        GPIO.setup(LEDPIN, GPIO.OUT)
 
 	unchanged_count = 0
 	last = -1
@@ -109,9 +111,11 @@ def main():
 	while True:
 		result = read_dht11_dat()
 		if result:
+                        GPIO.output(LEDPIN, GPIO.HIGH)
 			humidity, temperature = result
 			print "humidity: %s %%,  Temperature: %s C`" % (humidity, temperature)
 		time.sleep(1)
+                GPIO.output(LEDPIN, GPIO.LOW)
 
 def destroy():
 	GPIO.cleanup()
