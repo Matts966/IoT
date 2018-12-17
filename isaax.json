@@ -1,0 +1,11 @@
+{
+	"name": "IoT",
+	"version": "",
+	"description": "",
+	"author": "",
+	"license": "",
+	"language": "",
+	"scripts": {
+		"start": "sh main.sh"
+	}
+}
