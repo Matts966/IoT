@@ -28,6 +28,7 @@ def led_indicator():
     while True:
       if GPIO.input(SENSOR_PORT):
         GPIO.output(LED_PORT, GPIO.HIGH)
+        print "OK"
       else:
         GPIO.output(LED_PORT, GPIO.LOW)
       sleep(DELAY)
