@@ -21,7 +21,7 @@ def read_dht11_dat():
 	GPIO.output(DHTPIN, GPIO.LOW)
 	time.sleep(0.02)
 	GPIO.setup(DHTPIN, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(LEDPIN, GPIO.OUT)
+        GPIO.setup(LEDOUT, GPIO.OUT)
 
 	unchanged_count = 0
 	last = -1
