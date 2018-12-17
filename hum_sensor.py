@@ -111,11 +111,11 @@ def main():
 	while True:
 		result = read_dht11_dat()
 		if result:
-                        GPIO.output(LEDPIN, GPIO.HIGH)
+                        GPIO.output(LEDOUT, GPIO.HIGH)
 			humidity, temperature = result
 			print "humidity: %s %%,  Temperature: %s C`" % (humidity, temperature)
 		time.sleep(1)
-                GPIO.output(LEDPIN, GPIO.LOW)
+                GPIO.output(LEDOUT, GPIO.LOW)
 
 def destroy():
 	GPIO.cleanup()
