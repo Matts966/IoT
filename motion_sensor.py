@@ -7,7 +7,7 @@ from time import sleep
 
 SENSOR_PORT=5
 LED_PORT=25
-DELAY=1
+DELAY=1e-3
 
 def led_init():
   GPIO.setmode(GPIO.BCM)
