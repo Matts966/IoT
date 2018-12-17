@@ -1,1 +1,1 @@
-python hum_sensor.py
+python motion_sensor.py
