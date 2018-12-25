@@ -45,7 +45,7 @@ class motion_sensor:
                   = datetime.datetime.now()
               if self.on_callback and not self.on:
                 self.on_callback()
-              self.on = True
+                self.on = True
             else:
               GPIO.output(LED_PORT, GPIO.LOW)
               if self.delay_from_last_motion and \
@@ -55,8 +55,9 @@ class motion_sensor:
                         self.delay_from_last_motion:
                     if self.on:
                         self.off_callback()
-                self.on = False
+                        self.on = False
             sleep(DELAY)
+            print(self.on)
         finally:
           print("Finaly")
           led_deinit()
