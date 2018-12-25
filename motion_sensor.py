@@ -48,8 +48,8 @@ class motion_sensor:
               GPIO.output(LED_PORT, GPIO.LOW)
               if self.delay_from_last_motion and \
                       self.off_callback:
-                if datetime.datetime.now() -
-                        self.last_motion_date > 
+                if datetime.datetime.now() - \
+                        self.last_motion_date > \
                         self.delay_from_last_motion:
                     self.off_callback()
             sleep(DELAY)
