@@ -1,1 +1,1 @@
-python motion_sensor.py
+python light_control_system.py
