@@ -1,6 +1,6 @@
 import requests
 import json
-import setting.py
+import setting
 
 ucode = "a304-4"
 url = setting.URL

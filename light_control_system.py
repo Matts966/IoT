@@ -1,4 +1,4 @@
-import control_light.py
+import control_light
 import motion_sensor
 import datetime
 
