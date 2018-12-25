@@ -19,7 +19,7 @@ def led_deinit():
   GPIO.cleanup()
 
 class motion_sensor:
-    __init__(self, delay_from_last_motion=None,
+    def __init__(self, delay_from_last_motion=None, 
             on_callback=None, off_callback=None):
         self.last_motion_date 
             = datetime.datetime.now()
