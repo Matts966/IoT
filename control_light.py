@@ -18,7 +18,7 @@ putdata_off = {
 
 def _put(put_data):
     req = requests.put(url, data=json.dumps(
-        putdata), headers=headers, auth=auth)
+        put_data), headers=headers, auth=auth)
     return req.status_code
 
 def light_on():
