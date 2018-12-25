@@ -21,9 +21,9 @@ def led_deinit():
 class motion_sensor:
     def __init__(self, delay_from_last_motion=None, 
             on_callback=None, off_callback=None):
-        self.last_motion_date 
+        self.last_motion_date \
             = datetime.datetime.now()
-        self.delay_from_last_motion
+        self.delay_from_last_motion \
             = delay_from_last_motion
         self.on_callback = on_callback
         self.off_callback = off_callback
@@ -40,7 +40,7 @@ class motion_sensor:
           while True:
             if GPIO.input(SENSOR_PORT):
               GPIO.output(LED_PORT, GPIO.HIGH)
-              self.last_motion_date
+              self.last_motion_date \
                   = datetime.datetime.now()
               if self.on_callback:
                 self.on_callback()
@@ -48,7 +48,7 @@ class motion_sensor:
               GPIO.output(LED_PORT, GPIO.LOW)
               if self.delay_from_last_motion and \
                       self.off_callback:
-                if datetime.datetime.now() - 
+                if datetime.datetime.now() -
                         self.last_motion_date > 
                         self.delay_from_last_motion:
                     self.off_callback()
