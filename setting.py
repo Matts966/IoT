@@ -7,5 +7,8 @@ dotenv = Dotenv(dotenv_path)
 os.environ.update(dotenv)
 
 URL = os.environ.get("URL")
-AUTH = os.environ.get("AUTH")
+AUTH = (
+    os.environ.get("USER"),
+    os.environ.get("PASS")
+)
 
