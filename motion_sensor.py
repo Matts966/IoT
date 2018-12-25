@@ -3,6 +3,9 @@ import time
 import RPi.GPIO as GPIO
 from time import sleep
 
+import datetime
+import time
+
 SENSOR_PORT=5
 LED_PORT=25
 DELAY=1e-3
@@ -15,25 +18,45 @@ def led_init():
 def led_deinit():
   GPIO.cleanup()
 
-def led_indicator():
-  try:
-    led_init()
-    print("Start led_indicator")
-  except:
-    print("exception occurred")
-    return 1
-  else:
-    while True:
-      if GPIO.input(SENSOR_PORT):
-        GPIO.output(LED_PORT, GPIO.HIGH)
-        print "OK"
-      else:
-        GPIO.output(LED_PORT, GPIO.LOW)
-      sleep(DELAY)
-  finally:
-    print("Finaly")
-    led_deinit()
+class motion_sensor:
+    __init__(self, delay_from_last_motion=None, \
+            on_callback=None, off_callback=None):
+        self.last_motion_date 
+            = datetime.datetime.now()
+        self.delay_from_last_motion
+            = delay_from_last_motion
+        self.on_callback = on_callback
+        self.off_callback = off_callback
+        self.start()
+
+    def start(self):
+        try:
+          led_init()
+          print("start motion sensor")
+        except:
+          print("exception occurred")
+          return 1
+        else:
+          while True:
+            if GPIO.input(SENSOR_PORT):
+              GPIO.output(LED_PORT, GPIO.HIGH)
+              self.last_motion_date
+                  = datetime.datetime.now()
+              if self.on_callback:
+                self.on_callback()
+            else:
+              GPIO.output(LED_PORT, GPIO.LOW)
+              if self.delay_from_last_motion and \
+                      self.off_callback:
+                if datetime.datetime.now() - 
+                        self.last_motion_date > 
+                        self.delay_from_last_motion:
+                    self.off_callback()
+            sleep(DELAY)
+        finally:
+          print("Finaly")
+          led_deinit()
 
 if __name__ == '__main__':
-#  sys.exit(led_indicator())
-  led_indicator()
+  ms = motion_sensor()
+  ms.start()
