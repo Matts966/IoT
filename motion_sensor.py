@@ -27,8 +27,8 @@ class motion_sensor:
             = delay_from_last_motion
         self.on_callback = on_callback
         self.off_callback = off_callback
-        self.start()
         self.on = False
+        self.start()
 
     def start(self):
         try:
